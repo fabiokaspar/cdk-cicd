@@ -1,7 +1,7 @@
 async function handler(event: any, context: any) {
     return {
-        statusCode: 400,
-        body: JSON.stringify({msg: 'Hello'})
+        statusCode: 200,
+        body: JSON.stringify({msg: 'Hello from lambda'})
     }
 }
 
