@@ -1,2 +1,8 @@
-test('CI/CD TESTS', () => {
+import { handler } from "../services/hello";
+
+describe('CI/CD TESTS', () => {
+    test('handler should return 200', async () => {
+        const result = await handler({}, {})
+        expect(result.statusCode).toBe(200)
+    })
 });
