@@ -9,4 +9,4 @@ cdk.out
 
 .env
 .env.*
-.secrets
+.env.*.local
