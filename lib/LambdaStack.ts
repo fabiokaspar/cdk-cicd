@@ -17,7 +17,7 @@ export class LambdaStack extends Stack {
             handler: 'handler',
             entry: join(__dirname, '..', 'services', 'hello.ts'),
             environment: {
-                STAGE: props.stageName || 'development'
+                STAGE: props.stageName!
             }
         })
     }

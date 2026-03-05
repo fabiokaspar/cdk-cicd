@@ -5,7 +5,7 @@ import { PipelineStage } from './PipelineStage';
 
 export class CdkCicdStack extends cdk.Stack {
   private readonly repoName: string = 'fabiokaspar/cdk-cicd'
-  private readonly repoBranch: string = 'development'
+  private readonly repoBranch: string = 'main'
 
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
