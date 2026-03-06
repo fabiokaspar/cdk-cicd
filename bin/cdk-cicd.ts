@@ -7,8 +7,8 @@ export type TEnvDeployAWS = "development" | "prod"
 
 dotenv.config()
 
-const env = process.env.NODE_ENV ?? "development"
-// const env = process.env.NODE_ENV ?? "prod"
+// const env = process.env.NODE_ENV ?? "development"
+const env = process.env.NODE_ENV ?? "prod"
 dotenv.config({ path: `.env.${env}`, override: true })
 // dotenv.config({ path: `.env.${env}.local`, override: true })
 
