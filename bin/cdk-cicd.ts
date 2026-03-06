@@ -7,7 +7,7 @@ dotenv.config()
 
 const env = process.env.NODE_ENV
 if (env) {
-    dotenv.config({ path: `.env.${env}`, override: false })
+    dotenv.config({ path: `.env.${env}`, override: true })
     // dotenv.config({ path: `.env.${env}.local`, override: true })
 }
 
