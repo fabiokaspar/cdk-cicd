@@ -2,9 +2,10 @@ import * as cdk from 'aws-cdk-lib/core';
 import { CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import { PipelineStage } from './PipelineStage';
+import { TEnvDeployAWS } from '../bin/cdk-cicd';
 
 interface CdkCicdStackProps extends cdk.StackProps {
-  envDeploy: 'prod' | 'development'  
+  envDeploy: TEnvDeployAWS
 }
 
 export class CdkCicdStack extends cdk.Stack {
