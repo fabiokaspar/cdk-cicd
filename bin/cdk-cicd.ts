@@ -11,7 +11,7 @@ if (env === 'development' || env === 'prod') {
     // dotenv.config({ path: `.env.${env}.local`, override: true })
 
     const app = new cdk.App();
-    new CdkCicdStack(app, 'CdkCicdStackDev', {
+    new CdkCicdStack(app, `CdkCicdStack${env}`, {
         envDeploy: env
     });
     app.synth()
