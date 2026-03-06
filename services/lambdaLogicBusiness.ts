@@ -1,8 +1,7 @@
 async function handler(event: any, context: any) {
-    const {db_port, db_host, db_name, db_user, db_password} = process.env
     let statusCode = 200
 
-    if (!db_port || !db_host || !db_name || !db_user || !db_password) {
+    if (!process.env.DB_HOST) {
         statusCode = 500
     }
 
@@ -17,6 +16,8 @@ async function handler(event: any, context: any) {
             DB_PASSWORD  ${process.env.DB_PASSWORD}
         `)
     }
+
+    console.log('RESPONSE: ======================>>>>>> ', response)
 
     return response
 }
