@@ -50,9 +50,9 @@ export class CdkCicdStack extends cdk.Stack {
     if (props.envDeploy !== 'prod') {
       stage.addPre(new CodeBuildStep('unit-tests', {
         commands: [
-          'echo DB_HOST=$DB_HOST',
-          'node -e "console.log(process.env.DB_HOST)"',
+          'echo BEFORE_NPM=$DB_HOST',
           'npm ci',
+          'echo AFTER_NPM=$DB_HOST',
           'npm test'
         ],
         env: buildEnv
