@@ -2,9 +2,10 @@ import * as cdk from 'aws-cdk-lib/core';
 import { CodeBuildStep, CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines';
 import { Construct } from 'constructs';
 import { PipelineStage } from './PipelineStage';
+import { TEnvDeployAWS } from '../bin/cdk-cicd';
 
 interface CdkCicdStackProps extends cdk.StackProps {
-  envDeploy: 'prod' | 'development'  
+  envDeploy: TEnvDeployAWS
 }
 
 export class CdkCicdStack extends cdk.Stack {
@@ -24,7 +25,7 @@ export class CdkCicdStack extends cdk.Stack {
       DB_NAME: process.env.DB_NAME || '',
       DB_USER: process.env.DB_USER || '',
       DB_PASSWORD: process.env.DB_PASSWORD || '',
-      ENVIRONMENT: props.envDeploy || 'development'
+      ENVIRONMENT: process.env.NODE_ENV || 'development'
     }
 
     const pipeline = new CodePipeline(this, `pipeline-${props.envDeploy}`, {
