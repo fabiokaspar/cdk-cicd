@@ -2,8 +2,7 @@ import { handler } from "../services/lambdaLogicBusiness";
 
 describe('TESTING LOGIC BUSINESS', () => {
     test('check env', () => {
-        console.log('DB_HOST:', process.env.DB_HOST)
-        // expect(process.env.DB_HOST).toBeDefined()
+        expect(process.env.NODE_ENV).toBe('development')
     })
 
     test('handler should return 200', async () => {
