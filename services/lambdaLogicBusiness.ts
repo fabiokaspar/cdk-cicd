@@ -9,8 +9,8 @@ async function handler(event: any, context: any) {
 
     const response = {
         statusCode: statusCode,
-        body: JSON.stringify(`Rodando a lógica de negócios do ambiente: ${process.env.NODE_ENV}
-            - Credenciais BD:
+        body: JSON.stringify(`Rodando a lógica de negócios do ambiente.
+            NODE_ENV: ${process.env.NODE_ENV}
             DB_PORT:  ${process.env.DB_PORT} - 
             DB_HOST:  ${process.env.DB_HOST} - 
             DB_NAME:  ${process.env.DB_NAME} - 
