@@ -18,14 +18,25 @@ export class CdkCicdStack extends cdk.Stack {
       this.repoBranch = 'main'
     }
 
+    const buildEnv = {
+      DB_PORT: process.env.DB_PORT || '',
+      DB_HOST: process.env.DB_HOST || '',
+      DB_NAME: process.env.DB_NAME || '',
+      DB_USER: process.env.DB_USER || '',
+      DB_PASSWORD: process.env.DB_PASSWORD || '' 
+    }
+
     const pipeline = new CodePipeline(this, `pipeline-${props.envDeploy}`, {
       pipelineName: `pipeline-${props.envDeploy}`,
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub(this.repoName, this.repoBranch),
         commands: [
+          'echo DB_HOST=$DB_HOST',
+          'node -e "console.log(process.env.DB_HOST)"',
           'npm ci',
           'npx cdk synth'
         ],
+        env: buildEnv,
         primaryOutputDirectory: undefined
       })
     })
@@ -34,13 +45,17 @@ export class CdkCicdStack extends cdk.Stack {
       stageName: props.envDeploy !== 'prod' ? 'test' : 'deploy',
       envDeploy: props.envDeploy
     }))
+
     
     if (props.envDeploy !== 'prod') {
       stage.addPre(new CodeBuildStep('unit-tests', {
         commands: [
+          'echo DB_HOST=$DB_HOST',
+          'node -e "console.log(process.env.DB_HOST)"',
           'npm ci',
           'npm test'
-        ]
+        ],
+        env: buildEnv
       }))
     }
   }

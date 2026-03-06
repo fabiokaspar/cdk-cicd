@@ -7,16 +7,16 @@ dotenv.config()
 
 const env = process.env.NODE_ENV
 if (env) {
-    dotenv.config({ path: `.env.${env}`, override: true })
-    dotenv.config({ path: `.env.${env}.local`, override: true })
+    dotenv.config({ path: `.env.${env}`, override: false })
+    // dotenv.config({ path: `.env.${env}.local`, override: true })
 }
 
 const app = new cdk.App();
 new CdkCicdStack(app, 'CdkCicdStackDev', {
     envDeploy: 'development'
 });
-new CdkCicdStack(app, 'CdkCicdStackProd', {
-    envDeploy: 'prod'
-});
+// new CdkCicdStack(app, 'CdkCicdStackProd', {
+//     envDeploy: 'prod'
+// });
 
 app.synth()
