@@ -25,7 +25,7 @@ export class CdkCicdStack extends cdk.Stack {
       DB_NAME: process.env.DB_NAME || '',
       DB_USER: process.env.DB_USER || '',
       DB_PASSWORD: process.env.DB_PASSWORD || '',
-      ENVIRONMENT: process.env.NODE_ENV || 'development'
+      ENVIRONMENT: process.env.NODE_ENV || props.envDeploy
     }
 
     const pipeline = new CodePipeline(this, `pipeline-${props.envDeploy}`, {
