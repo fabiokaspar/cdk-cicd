@@ -5,6 +5,8 @@ async function handler(event: any, context: any) {
         statusCode = 500
     }
 
+    console.log('MUDANÇA NA LÓGICA DE NEGÓCIOS....')
+
     const response = {
         statusCode: statusCode,
         body: JSON.stringify(`Rodando a lógica de negócios do ambiente: ${process.env.NODE_ENV}
