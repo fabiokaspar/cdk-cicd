@@ -7,14 +7,16 @@ async function handler(event: any, context: any) {
 
     const response = {
         statusCode: statusCode,
-        body: JSON.stringify(`Rodando a lógica de negócios do ambiente: ${process.env.NODE_ENV}
-            - Credenciais BD:
+        body: JSON.stringify({
+            changes: 'MUDANÇA NA LÓGICA DE NEGÓCIOS....',
+            msg: `Rodando a lógica de negócios do ambiente.`,
+            vars: `NODE_ENV: ${process.env.NODE_ENV}
             DB_PORT:  ${process.env.DB_PORT} - 
             DB_HOST:  ${process.env.DB_HOST} - 
             DB_NAME:  ${process.env.DB_NAME} - 
             DB_USER:  ${process.env.DB_USER} - 
             DB_PASSWORD  ${process.env.DB_PASSWORD}
-        `)
+        `})
     }
 
     console.log('RESPONSE: ======================>>>>>> ', response)
